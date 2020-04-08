@@ -77,6 +77,7 @@
 	// default baud rate if not defined in the Makefile
 	#define BAUD            9600
 #endif
+#include <util/setbaud.h>    // defines UBRR register value constants based on BAUD and F_CPU
 
 #ifdef HIGH_CPM
 	// high cpm-maximum mode (1,966,050), reduced resolution
@@ -287,7 +288,6 @@ void calc_values(void)
 int main(void)
 	{
 	// configure the uart
-	#include <util/setbaud.h>    // defines UBRR register value constants based on BAUD and F_CPU
 	UBRRH = UBRRH_VALUE;
 	UBRRL = UBRRL_VALUE;
 	UCSRB = (1 << RXEN) | (1 << TXEN);
